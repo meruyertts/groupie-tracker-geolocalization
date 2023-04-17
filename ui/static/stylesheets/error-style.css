@@ -1,0 +1,37 @@
+body{
+    background-color: lavenderblush;
+}
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 8px 0 rgba(96,96,96);
+    }
+div{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.3125rem;
+    line-height:1.6;
+    background-color: white;
+
+}
+.split{
+    display: flex;
+    flex-direction: column;
+}
+@media(min-width: 40em){
+    .split{
+        flex-direction: row;
+    }
+    .split>*{
+        flex-basis:100%;
+    }
+
+  .split > * + * {
+    margin-left: 2em;
+  }
+}

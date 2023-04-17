@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@100&display=swap" rel="stylesheet">
+<script  src="https://api-maps.yandex.ru/2.1/?apikey=2492cb84-7b6a-4c14-9104-848347ec6da1&lang=ru_RU" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/stylesheets/more-info.css">
+</head>
+<body>
+    <header class="text-center">
+        <p>Detailed info</p>
+        <h2>Learn more about your favorite artists</h2>
+    </header>
+    <section>
+        <div class="container">
+
+            <div class="split">
+              <div class="col">
+                <h2 class="text-center">Origins:</h2>
+                <p>Artist Name: {{.Name}}</p>
+                <p>Date Created: {{.CreationDate}}</p>
+                <p>First Album: {{.FirstAlbum}}</p>
+              </div>
+              <div class="col">
+                <h2 class="text-center">The members are:</h2>
+                        {{range .Members}}
+                        <ul>
+                            <li>{{.}}</li>
+                        </ul>
+                        {{end}}
+              </div>
+              <div class="col">
+                <h2>Last and/or upcoming concert dates:</h2>
+                    {{range $key, $value := .DatesLocations}}
+                    <ul>
+                        <li>
+                            <div class="city">
+                            {{$key}}
+                            </div>
+                            {{range $value}}
+                            <ul>
+                                <li>
+                                    {{.}}
+                                </li>
+                            </ul>
+                           
+                            {{end}}
+                            
+                        </li>
+                    </ul>
+                    {{end}}
+              </div>
+            </div>
+          </div>
+    </section>
+    <section>
+        <div style="width: 100%; display: flex; justify-content: center;">
+<div id="map" class="map1" style="width: 700px; height: 400px;">
+    <script>ymaps.ready(init);
+
+    function init() {
+        myMap = new ymaps.Map("map",{
+            center: [51.11, 71.45],
+            zoom: 2
+        });
+    
+        let coords = document.getElementsByClassName('city');
+
+        for (let coord of coords) {
+            console.log(coord)
+            let newCoord = coord.innerHTML.replace(/-/g, "_")
+            newCoord = newCoord.replace(/_/g, " ")
+            console.log(newCoord)
+
+            let myGeocoder = ymaps.geocode(newCoord, {
+            results: 1, prefLang: "ru"});
+
+            myGeocoder.then(function(res) {
+                myMap.geoObjects.add(res.geoObjects);
+            });
+        }
+    };
+    </script>
+</div>
+</div>
+    </section>
+ 
+</body>
+</html>

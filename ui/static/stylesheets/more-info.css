@@ -1,0 +1,79 @@
+header{
+    background-image: url("../myimages/5208008.jpg");
+    background-size: contain;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color:black;
+    padding: 2rem 0;
+}
+section {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.3125rem;
+    line-height:1.6;
+    margin: 0;
+    padding:0;
+    overflow-x: hidden;
+    color:black;
+}
+
+body
+{
+    margin:0;
+}
+
+h2
+{
+    font-family: 'Fredoka One', cursive;
+    font-weight: 900;
+    line-height: 1;
+    height: 3em;
+}
+
+h2,
+p{
+    margin-top: 1em;
+}
+.text-center{
+    text-align: center;
+}
+
+section{
+    padding: 4rem 0;
+}
+.container{
+    width: min(90%, 70.5rem);
+    margin-inline: auto;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0);
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-bottom: 5em;
+    background-color:#FFF0F5 ;
+}
+.col{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+ .container:hover {
+    box-shadow: 0 8px 16px 0 rgb(0, 0, 0);
+    background-color: white;
+  }
+  
+.split{
+    display: flex;
+    flex-direction: column;
+}
+@media(min-width: 40em){
+    .split{
+        flex-direction: row;
+    }
+    .split>*{
+        flex-basis:100%;
+    }
+
+  .split > * + * {
+    margin-left: 2em;
+  }
+}
